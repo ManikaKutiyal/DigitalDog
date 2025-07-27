@@ -62,7 +62,7 @@ function handleDeath (){
 
         document.body.appendChild(grave);
 
-        const thump = new Audio("thump.mp3");
+        const thump = new Audio("images/thump.mp3");
         thump.play();
 }
 
