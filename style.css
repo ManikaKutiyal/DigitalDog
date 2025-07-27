@@ -1,0 +1,203 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+    font-family: 'Seoge UI', sans-serif;
+}
+
+body{
+    background: #fdf6e3;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height:100vh;
+    padding: 2rem;
+}
+
+.container{
+    background:#fff;
+    border-radius: 16px;
+    padding:2rem;
+    width:100%;
+    max-width:500px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+h1{
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+#pet-display{
+    margin: 1rem 0;
+    font-size: 5rem;
+}
+#pet-name-text{
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    color: #666;
+}
+
+.pet-name-section{
+    margin-bottom: 1.5rem;
+}
+
+.pet-name-section input{
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    width: 70%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+.pet-name-section button{
+    padding: 0.5rem 1rem;
+    margin-left: 0.5rem;
+    border: none;
+    background: #ffce54;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.stats{
+    margin: 1.5rem 0;
+}
+
+.stat{
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.stat label{
+    font-weight: bold;
+}
+
+.bar{
+    height: 20px;
+    background: #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.fill{
+    height: 100%;
+    background: #ffce54;
+    width: 80%;
+    transition: width 0.3s ease;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.buttons button{
+    padding: 0.75rem 1.2rem;
+    border: none;
+    background: #4fc3f7;
+    color: white;
+    font-weight: bold;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.buttons button:hover{
+    transform: scale(1.05);
+}
+
+#message {
+    margin-top: 1rem;
+    font-style: italic;
+    color: #444;
+}
+
+.bar-container{
+    margin: 10px 0;
+}
+
+.label{
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.bar-background {
+    width: 100%;
+    height: 20px;
+    background-color: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    width: 100%;
+    background-color: green;
+    border-radius: 10px;
+    transition: width 0.3s ease-in-out;
+}
+
+/* Shake effect */
+@keyframes shake {
+  0% { transform: translate(1px, 1px); }
+  25% { transform: translate(-1px, -2px); }
+  50% { transform: translate(3px, 2px); }
+  75% { transform: translate(-1px, 1px); }
+  100% { transform: translate(1px, -1px); }
+}
+
+.shake {
+  animation: shake 0.5s;
+  animation-iteration-count: 6;
+}
+
+/* Gravestone styling */
+#gravestone {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  background: #222;
+  color: white;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 0 20px black;
+  z-index: 9999;
+}
+
+#gravestone button {
+  padding: 10px 20px;
+  margin-top: 15px;
+  font-size: 1rem;
+  background: crimson;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.fact-style{
+    margin-top: 10px;
+    font-style: italic;
+    color:#222;
+    background: #f9f9f9;
+    padding: 8px 12px;
+    border-radius: 8px;
+    max-width: 500px;
+}
+#talkBtn {
+  padding: 10px 20px;
+  margin-top: 15px;
+  margin-bottom: 7px;
+  font-size: 1rem;
+  background: crimson;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
