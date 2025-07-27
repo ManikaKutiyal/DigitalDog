@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Pet - Bruno</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>My Digital Pet Dog</h1>
+        <div class="pet-name-section">
+            <input type="text" id = "pet-name-input" placeholder="Name your pet..."/>
+            <button id = "save-name">Save Name</button>
+        </div>
+        <div class="pet-display">
+            <div id = "pet-face"></div>
+            <p id="pet-name-text">Your pets name will appear here</p>
+        </div>
+        <div id="message">Take care of your pet!</div>
+        <div class="stats">
+            <div class="stat">
+                <label>hungry</label>
+                <div class = "bar"><div class="fill" id="hunger-bar"></div></div>
+            </div>
+            <div class="stat">
+                <label>Happiness</label>
+                <div class= "bar"><div class="fill" id="happiness-bar"></div></div>
+            </div>
+            <div class="stat">
+                <label>Energy</label>
+                <div class="bar"><div class="fill" id = "energy-bar"></div></div>
+            </div>
+            <div class="bar-container">
+                <div class="label">Health</div>
+                <div class="bar-background">
+                    <div class ="bar-fill" id="health-bar"></div>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="buttons">
+            <button id="feed-btn">feed</button>
+            <button id="play-btn">play</button>
+            <button id = "sleep-btn">sleep</button>
+            <button id = "revive-btn" style="display: none;">Revive</button>
+        </div>
+        <button id="talkBtn">Learn about your Pet</button>
+        <p id="fact-box" class="fact-style"></p>
+    </div>
+    <script src = "script.js"></script>
+</body>
+</html>
