@@ -5,6 +5,7 @@ const petNameText = document.getElementById("pet-name-text");
 const petEmoji = document.getElementById("pet-face");
 const message = document.getElementById("message");
 const healthFill = document.getElementById("health-bar");
+const dogVideo = document.getElementById("dog-video");
 let isDead = false;
 
 let petState = {
@@ -14,6 +15,18 @@ let petState = {
     happiness: 80,
     energy: 80,
 };
+
+function showVideo(fileName, duration = null) {
+    dogVideo.src = `assets/${fileName}`;
+    dogVideo.load();
+    dogVideo.play();
+
+    if (duration) {
+        setTimeout(() => {
+            showVideo("dog-idle.mp4");
+        }, duration);
+    }
+}
 
 document.getElementById("save-name").addEventListener("click", () => {
     const nameInput = document.getElementById("pet-name-input").value.trim();
@@ -60,10 +73,9 @@ function handleDeath (){
         <button onclick = "resetPet()">Adopt New Pet</button>
         `;
 
-        document.body.appendChild(grave);
-
-        const thump = new Audio("images/thump.mp3");
-        thump.play();
+    document.body.appendChild(grave);
+    const thump = new Audio("assets/thump.mp3");
+    thump.play();
 }
 
 function changeStat(stat, amount){
@@ -86,21 +98,23 @@ function updateButton(){
 
 document.getElementById("feed-btn").addEventListener("click", () => {
     if (petState.hunger >= 100){
-        message.innerText = `${petState.name} is already full`
+        message.innerText = `${petState.name} is already full`;
         return;
     }
     changeStat("hunger", 10);
     message.innerText = `${petState.name} enjoyed the meal`;
+    showVideo("dog-eating.mp4", 4000);
 });
 
 document.getElementById("play-btn").addEventListener("click", () => {
     if (petState.energy <= 0){
-        message.innerText = `${petState.name} is too tired to play! Let them Rest!`
+        message.innerText = `${petState.name} is too tired to play! Let them Rest!`;
         return;
     }
     changeStat("happiness", 10);
-    changeStat("energy", -5)
+    changeStat("energy", -5);
     message.innerText = `${petState.name} had fun playing`;
+    showVideo("dog-playing.mp4", 3700);
 });
 
 document.getElementById("sleep-btn").addEventListener("click", () => {
@@ -111,12 +125,13 @@ document.getElementById("sleep-btn").addEventListener("click", () => {
     changeStat("energy", 10);
     changeStat("hunger", -5);
     message.innerText = `${petState.name} took a nap`;
-})
+    showVideo("dog-sleeping.mp4", 5000);
+});
 
 setInterval(() =>{
-    changeStat("hunger", -2)
-    changeStat("happiness", -1)
-    changeStat("energy", -1)
+    changeStat("hunger", -2);
+    changeStat("happiness", -1);
+    changeStat("energy", -1);
 
     let warnings = [];
     if (petState.hunger <= 20) warnings.push(`${petState.name} is hungry!`);
@@ -138,14 +153,18 @@ function resetPet(){
     localStorage.setItem("petState", JSON.stringify(petState));
     isDead = false;
 
+    localStorage.removeItem("dogAdopted");
+    showVideo("dog-adopted.mp4", 7000);
+    localStorage.setItem("dogAdopted", "true");
+
     const grave = document.getElementById("gravestone");
     if (grave) grave.remove();
 
     document.body.classList.remove("shake");
 
     document.querySelectorAll("button").forEach(btn => btn.disabled = false);
-    updateDisplay()
-    message.innerText = "you've adopted a new pet!"
+    updateDisplay();
+    message.innerText = "you've adopted a new pet!";
 }
 
 async function getDogFact() {
@@ -163,6 +182,16 @@ document.getElementById("talkBtn").addEventListener("click", getDogFact);
 
 const savedState = localStorage.getItem("petState");
 if(savedState) {
-    petState = JSON.parse(savedState)
+    petState = JSON.parse(savedState);
 }
-updateDisplay()
+
+if (!localStorage.getItem("dogAdopted")) {
+    showVideo("dog-adopted.mp4", 7000);
+    localStorage.setItem("dogAdopted", "true");
+} else {
+    showVideo("dog-idle.mp4");
+}
+
+
+
+updateDisplay();
